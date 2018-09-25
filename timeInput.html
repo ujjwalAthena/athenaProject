@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<!--Include External Css file -->
+<head>
+	<title> </title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+
+
+		$(document).ready(function(){
+			
+				$(".Time-24").keypress(function(key) {
+					var inputNumber = $(this).val();
+		        	if(key.charCode < 48 || key.charCode > 57 || $(this).val().length > 3){
+		        		return false;		
+		        	}
+		        	//alert(inputNumber);
+		        	console.log(inputNumber);   
+		    });
+					$('.Time-24').blur(function(){
+		    			convertInputIntoTime();	
+				});
+		    	
+		});
+		
+	function convertInputIntoTime(){
+		var str, hourValue, minuteValue, realHour, realMinute;
+		str=$(".Time-24").val();
+		hourValue = str.substring(0,2);
+		var minuteValue = str.substring(2,4);
+		//console.log('@@@@@@'+hourValue);
+		console.log('&&&&&&'+minuteValue);
+		if(hourValue > 23 || minuteValue >60){
+			console.log('@@@@@@@@@@@@@@@@@@s'+(hourValue % 24));
+			console.log('!!!!!!!!!!!!!!!!!'+(minuteValue - 60));
+		realHour = hourValue % 24;
+		realMinute = minuteValue - 60;	
+		}
+	}
+</script>
+<body>
+	
+	<input type="text" value="" class="Time-24" />
+
+	
+</body>
+</html>
